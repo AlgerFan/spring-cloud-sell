@@ -1,12 +1,19 @@
 package cn.algerfan.order.controller;
 
+import cn.algerfan.order.client.ProductClient;
+import cn.algerfan.order.common.DecreaseStockOutput;
+import cn.algerfan.order.common.ProductInfoOutput;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author algerfan
@@ -18,6 +25,9 @@ public class ClientController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+    @Autowired
+    private ProductClient productClient;
+
 
     @GetMapping("/getProductMsg")
     public String getProductMsg() {
@@ -45,5 +55,17 @@ public class ClientController {
         return response;
     }
 
+    @PostMapping("/productInfoList")
+    public String productInfoList() {
+        List<ProductInfoOutput> productInfos = productClient.productInfoList(Collections.singletonList("157875227953464068"));
+        log.info("response={}", productInfos);
+        return "ok";
+    }
+
+    @PostMapping("/decreaseStock")
+    public String decreaseStock() {
+        productClient.decreaseStock(Collections.singletonList(new DecreaseStockOutput("157875227953464068", 2)));
+        return "ok";
+    }
 
 }
