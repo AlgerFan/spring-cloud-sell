@@ -25,6 +25,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
         <!--     TODO     spring-cloud-starter-hystrix ——> spring-cloud-starter-netflix-hystrix-->
         <!--     TODO   2.0.2.RELEASE需要引入-->
         <dependency>

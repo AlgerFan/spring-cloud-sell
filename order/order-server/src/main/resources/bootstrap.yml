@@ -13,3 +13,8 @@ spring:
         enabled: true
         service-id: CONFIG
       profile: dev
+    #分组
+    stream:
+      bindings:
+        myMessage:
+          group: order
