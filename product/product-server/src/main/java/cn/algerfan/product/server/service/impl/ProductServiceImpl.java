@@ -8,6 +8,8 @@ import cn.algerfan.product.server.enums.ResultEnum;
 import cn.algerfan.product.server.exception.ProductException;
 import cn.algerfan.product.server.repository.ProductInfoRepository;
 import cn.algerfan.product.server.service.ProductService;
+import cn.algerfan.product.server.util.JsonUtil;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author algerfan
@@ -26,6 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository productInfoRepository;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public List<ProductInfo> findUpAll() {
@@ -45,8 +50,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void decreaseStock(List<DecreaseStockOutput> cartDtoList) {
+        List<ProductInfo> productInfoList = decreaseStockProcess(cartDtoList);
+        //发送mq消息
+        List<ProductInfoOutput> collect = productInfoList.stream().map(e -> {
+            ProductInfoOutput productInfoOutput = new ProductInfoOutput();
+            BeanUtils.copyProperties(e, productInfoOutput);
+            return productInfoOutput;
+        }).collect(Collectors.toList());
+        amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(collect));
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public List<ProductInfo> decreaseStockProcess(List<DecreaseStockOutput> cartDtoList) {
+        List<ProductInfo> productInfoList = new ArrayList<>();
         for (DecreaseStockOutput cartDto : cartDtoList) {
             Optional<ProductInfo> productInfoOptional = productInfoRepository.findById(cartDto.getProductId());
             //判断商品是否存在
@@ -61,6 +78,8 @@ public class ProductServiceImpl implements ProductService {
             }
             productInfo.setProductStock(result);
             productInfoRepository.save(productInfo);
+            productInfoList.add(productInfo);
         }
+        return productInfoList;
     }
 }
