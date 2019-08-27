@@ -16,5 +16,9 @@ spring:
     #分组
     stream:
       bindings:
+        myMessage-input:
+          destination: myMessage
+        myMessage-output:
+          destination: myMessage
         myMessage:
           group: order

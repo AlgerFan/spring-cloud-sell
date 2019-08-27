@@ -16,15 +16,10 @@ import org.springframework.stereotype.Component;
 public class StreamReceiver {
 
     @StreamListener(StreamClient.INPUT)
-    @SendTo(StreamClient.OUTPUT)
-    public Object processInput(Object message) {
-        log.info("StreamReceiverInput: {}", message);
-        return message;
-    }
-
-    @StreamListener(StreamClient.OUTPUT)
-    public void processOutput(Object message) {
-        log.info("StreamReceiverOutput: {}", message);
+    public void process(Object message) {
+        byte[] bytes = (byte[]) message;
+        String payload = new String(bytes);
+        log.info("StreamReceiver: {}", payload);
     }
 
 }
