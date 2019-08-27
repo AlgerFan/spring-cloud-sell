@@ -16,7 +16,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!--     TODO     spring-cloud-starter-feign ——> spring-cloud-starter-openfeign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -37,8 +36,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        <!--     TODO     spring-cloud-starter-hystrix ——> spring-cloud-starter-netflix-hystrix-->
-        <!--     TODO   2.0.2.RELEASE需要引入-->
+        <!--     spring-cloud-starter-hystrix ——> spring-cloud-starter-netflix-hystrix-->
+        <!--     2.0.2.RELEASE没有web依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

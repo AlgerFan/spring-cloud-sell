@@ -10,7 +10,6 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-<!--     TODO 2.0.0.M3 -->
         <version>2.0.2.RELEASE</version>
         <relativePath/>
     </parent>
@@ -23,7 +22,6 @@
 
    <properties>
         <java.version>1.8</java.version>
-<!--     TODO  Finchley.M2-->
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     </properties>
 
@@ -38,43 +36,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <!-- TODO repository-->
-    <!--<repositories>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>-->
 
 </project>
