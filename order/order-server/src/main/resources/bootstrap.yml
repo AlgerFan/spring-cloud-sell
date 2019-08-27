@@ -20,5 +20,10 @@ spring:
           destination: myMessage
         myMessage-output:
           destination: myMessage
+        myMessage-input2:
+          destination: myMessage2
+        myMessage-output2:
+          destination: myMessage2
         myMessage:
           group: order
+          content-type: application/json

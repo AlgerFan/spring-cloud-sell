@@ -1,5 +1,6 @@
 package cn.algerfan.order.server.controller;
 
+import cn.algerfan.order.server.dto.OrderDto;
 import cn.algerfan.order.server.message.StreamClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -18,9 +19,22 @@ public class SendMessageController {
     @Autowired
     private StreamClient streamClient;
 
-    @GetMapping("/sendMessage")
+    /**
+     * 发送消息测试
+     */
+    /*@GetMapping("/sendMessage")
     public void send(){
             streamClient.output().send(MessageBuilder.withPayload("Produce a message").build());
+    }*/
+
+    /**
+     * 发送OrderDto对象
+     */
+    @GetMapping("/sendMessage")
+    public void send(){
+        OrderDto orderDto = new OrderDto();
+        orderDto.setOrderId("123456");
+        streamClient.output().send(MessageBuilder.withPayload(orderDto).build());
     }
 
 }

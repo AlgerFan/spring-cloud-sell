@@ -14,10 +14,19 @@ public interface StreamClient {
     String INPUT = "myMessage-input";
     String OUTPUT = "myMessage-output";
 
+    String INPUT2 = "myMessage-input2";
+    String OUTPUT2 = "myMessage-output2";
+
     @Input(INPUT)
     SubscribableChannel input();
 
     @Output(OUTPUT)
     MessageChannel output();
+
+    @Input(INPUT2)
+    SubscribableChannel input2();
+
+    @Output(OUTPUT2)
+    MessageChannel output2();
 
 }
