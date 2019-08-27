@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/AlgerFan/config-repo.git
+          uri: https://github.com/AlgerFan/config-repo.git
           username: AlgerFan
           password:
 eureka:
