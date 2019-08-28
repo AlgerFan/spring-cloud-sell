@@ -14,4 +14,11 @@ public interface OrderService {
      * @return dto对象
      */
     OrderDto create(OrderDto orderDto);
+
+    /**
+     * 完结订单（只能卖家操作）
+     * @param orderId
+     * @return
+     */
+    OrderDto finish(String orderId);
 }
