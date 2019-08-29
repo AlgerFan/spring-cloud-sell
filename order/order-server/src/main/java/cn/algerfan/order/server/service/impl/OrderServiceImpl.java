@@ -73,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
         productClient.decreaseStock(cartDtoList);
         //4.订单入库
         OrderMaster orderMaster = new OrderMaster();
-        orderDto.setOrderId(KeyUtil.genUniqueKey());
+        orderDto.setOrderId(orderId);
         BeanUtils.copyProperties(orderDto, orderMaster);
         orderMaster.setOrderAmount(orderAmount);
         orderMaster.setOrderStatus(OrderStatus.NEW.getCode());
