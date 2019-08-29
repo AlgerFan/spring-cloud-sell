@@ -74,11 +74,11 @@ public class ProductController {
      */
     @PostMapping("/listForOrder")
     public List<ProductInfoOutput> productInfoList(@RequestBody List<String> productIdList) {
-        /*try {
+        try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
         return productService.productInfoList(productIdList);
     }
 

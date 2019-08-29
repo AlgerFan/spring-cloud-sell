@@ -27,3 +27,8 @@ spring:
         myMessage:
           group: order
           content-type: application/json
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

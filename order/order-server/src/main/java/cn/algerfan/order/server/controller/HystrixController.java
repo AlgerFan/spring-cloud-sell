@@ -35,7 +35,12 @@ public class HystrixController {
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),
     })
      */
-    @HystrixCommand
+    @HystrixCommand(commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),
+    })
     @GetMapping("/getProductInfoList")
     public String getProductInfoList(@RequestParam("number") Integer number) {
         if(number%2 == 0) {
