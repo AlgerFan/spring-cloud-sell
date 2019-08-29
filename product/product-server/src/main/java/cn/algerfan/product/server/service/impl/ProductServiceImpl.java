@@ -13,8 +13,8 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
         amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(collect));
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public List<ProductInfo> decreaseStockProcess(List<DecreaseStockOutput> cartDtoList) {
         List<ProductInfo> productInfoList = new ArrayList<>();
         for (DecreaseStockOutput cartDto : cartDtoList) {

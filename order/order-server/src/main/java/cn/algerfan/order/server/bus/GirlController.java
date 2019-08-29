@@ -1,6 +1,5 @@
-package cn.algerfan.order.server.controller;
+package cn.algerfan.order.server.bus;
 
-import cn.algerfan.order.server.config.GirlConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

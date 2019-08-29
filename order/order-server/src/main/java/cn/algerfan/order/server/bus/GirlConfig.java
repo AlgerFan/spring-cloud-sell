@@ -1,4 +1,4 @@
-package cn.algerfan.order.server.config;
+package cn.algerfan.order.server.bus;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
