@@ -13,7 +13,7 @@ spring:
         enabled: true
         service-id: CONFIG
       profile: dev
-    #分组
+    # Stream的分组（测试）
     stream:
       bindings:
         myMessage-input:
@@ -27,8 +27,3 @@ spring:
         myMessage:
           group: order
           content-type: application/json
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
