@@ -1,3 +1,11 @@
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
 spring:
   application:
     name: config
@@ -8,10 +16,6 @@ spring:
           uri: https://github.com/AlgerFan/config-repo.git
           username: AlgerFan
           password:
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka/
 management:
   endpoints:
     web:

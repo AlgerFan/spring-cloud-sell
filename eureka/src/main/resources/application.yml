@@ -1,3 +1,8 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka
 eureka:
   client:
     service-url:
@@ -7,6 +12,3 @@ eureka:
     enable-self-preservation: false
   instance:
     prefer-ip-address: true
-spring:
-  application:
-    name: eureka
