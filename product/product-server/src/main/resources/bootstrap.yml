@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8061
 eureka:
   client:
     service-url:
@@ -15,3 +15,6 @@ spring:
         enabled: true
         service-id: CONFIG
       profile: dev
+# Finchley 升级 Greenwich，这是Spring Boot 2.1 后新增的属性运行bean 覆盖
+  main:
+    allow-bean-definition-overriding: true

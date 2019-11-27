@@ -48,7 +48,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
-        <!--     2.0.2.RELEASE没有web依赖-->
+        <!--     spring cloud没有web依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -64,6 +64,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
