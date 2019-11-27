@@ -1,7 +1,7 @@
-# SpringCloud学习(Finchley版本)
+# SpringCloud学习(已升级至Greenwich.SR2)
 
 环境：
-Spring Boot 2.0.2.RELEASE + Spring Cloud Finchley.RELEASE
+Spring Boot 2.1.8.RELEASE + Spring Cloud Greenwich.SR2
 
 1. 服务注册与发现（Eureka）
 2. 服务拆分（Product服务和Order服务）
